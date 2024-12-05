@@ -1,0 +1,169 @@
+{
+  "main": {
+    "id": "9522a56cb4cac86e",
+    "type": "split",
+    "children": [
+      {
+        "id": "c1083e1e54988e88",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "38f031127fd1ab89",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Python den první.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Python den první"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "abc76aaee2a9e57f",
+    "type": "split",
+    "children": [
+      {
+        "id": "1d7abed1353da05b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b5f2d0f5e316a680",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Průzkumník souborů"
+            }
+          },
+          {
+            "id": "5a7a6f4ce27ead39",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Hledat"
+            }
+          },
+          {
+            "id": "c0f2793c5c6abdbf",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Záložky"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "6ec24c1755196195",
+    "type": "split",
+    "children": [
+      {
+        "id": "5fe8a7acf8f793de",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8c16b5fe2437c99e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Python den první.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Zpětné odkazy pro Python den první"
+            }
+          },
+          {
+            "id": "ed2a6c800a788bd3",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Python den první.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Odchozí odkazy z Python den první"
+            }
+          },
+          {
+            "id": "966d41308a8836bd",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "b71544d553ad4d87",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Python den první.md"
+              },
+              "icon": "lucide-list",
+              "title": "Přehled Python den první"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Otevřít rychlé přepínání": false,
+      "graph:Otevřít graf": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Otevřít dnešní poznámku": false,
+      "templates:Vložit šablonu": false,
+      "command-palette:Otevřít paletu příkazů": false
+    }
+  },
+  "active": "38f031127fd1ab89",
+  "lastOpenFiles": [
+    "Python den první.md"
+  ]
+}
