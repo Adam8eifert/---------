@@ -1,0 +1,1 @@
+Data jednotlivých webinářů: 20. listopadu, 27. listopadu, 4. prosince, 11. prosince, 18. prosince, 8. ledna, 15. ledna, 22. ledna, 29. ledna, 5. února, 12. února, 19. února, 5. března, 12. března, 19. března, 26. března, 2. dubna, 9. dubna, 16. dubna, 23. dubna, 30. dubna, 7. května, 14. května, 21. května

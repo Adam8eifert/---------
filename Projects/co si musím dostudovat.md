@@ -1,7 +1,5 @@
--modulo %
+
 -praktické využití AI pro moje potřeby, studium, práce, Angličtina
--slicing, striding +kombinace+ list
--dir, help
--dělat mezery
--zkusit jiné vývojářské prostředí
--decimal
+-IDE ma nekde inspection
+-volitelne argumenty
+

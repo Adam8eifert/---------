@@ -4,3 +4,4 @@ co bude potřeba?
 -indexování
 -dělat mezery
 -velka mala pismena string operator in
+-metoda get
