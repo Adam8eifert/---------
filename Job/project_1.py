@@ -41,11 +41,12 @@ users = {"bob": "123",
 username = input("Enter your username:")
 password = input("Enter your password:")
 # conditional statements
-if username in users and users[username] == password:
-    print("Hello", username, "welcome to the app, we have 3 texts to be analyzed.")
-elif not password:
-    print("You skipped the password field!")
-elif not username.islower:
+if not username or not password:
+    print("Both username and password are required!")
+elif username in users and users[username] == password:
+    print(f"Hello {username}, welcome to the app! We have 3 texts to be analyzed.")
+elif not username[0].islower():
     print("Your username must start with a lowercase letter!")
 else:
-    print("Access denied! The app will be terminated")
+    print("Access denied! The app will be terminated.")
+# input TEXTS number
