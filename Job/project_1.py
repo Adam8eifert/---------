@@ -31,22 +31,68 @@ other freshwater genera and herring similar to those
 in modern oceans. Other fish such as paddlefish,
 garpike and stingray are also present."""
 ]
-# users and passwords
-users = {"bob": "123",
-        "ann": "pass123",
-        "mike": "password",
-        "liz": "pass123"
+# Users and passwords in dict
+users = {
+    "bob": "123",
+    "ann": "pass123",
+    "mike": "password",
+    "liz": "pass123"
 }
-# input definitions
-username = input("Enter your username:")
-password = input("Enter your password:")
-# conditional statements
-if not username or not password:
-    print("Both username and password are required!")
-elif username in users and users[username] == password:
-    print(f"Hello {username}, welcome to the app! We have 3 texts to be analyzed.")
-elif not username[0].islower():
-    print("Your username must start with a lowercase letter!")
+# Loop for user login
+for _ in range(3):
+    username = input("Enter your username:").strip()
+    password = input("Enter your password:").strip()
+    # Check if both username and password are provided
+    if not username or not password:
+        print("Both username and password are required!")
+        continue
+    # Check if the username starts with a lowercase letter
+    if not username[0].islower():
+        print("Username must start with a lowercase letter!")
+        continue
+    # Check if the user exists
+    if  username not in users:
+        print(f"username:{username}\npassword:{password}\nUnregistered user, terminating the program!")
+        exit()
+    # Check if the password is correct
+    if users[username] != password:
+        print(f"username:{username},\npassword:{password}\nIncorrect password, terminating the program!")
+        exit()
+    # Successful login
+    print(f"Hello {username}, welcome to the app! We have {len(TEXTS)} texts to be analyzed.")
+    break  
 else:
-    print("Access denied! The app will be terminated.")
-# input TEXTS number
+    print(f"\nusername:{username}\npassword:{password}\nAccess denied! Too many failed attempts.")
+text_num = input("Enter a number btw. 1 and 3 to select:").strip()
+# Text num definitions
+if not text_num.isdigit() or int(text_num) not in range(1, 4):
+    print("Invalid input. Terminating the program!")
+    exit()
+# Selection of a specific text
+selected_text = TEXTS[int(text_num) - 1]
+# Text analysis
+words = selected_text.split()
+num_words = len(words)
+num_titlecase = sum(1 for word in words if word.istitle())
+num_uppercase = sum(1 for word in words if word.isupper())
+num_lowercase = sum(1 for word in words if word.islower())
+num_numeric = sum(1 for word in words if word.isdigit())
+sum_numeric = sum(int(word) for word in words if word.isdigit())
+# Analysis results
+print(f"\nAnalysis of selected text:")
+print(f"Number of words: {num_words}")
+print(f"Number of titlecase words: {num_titlecase}")
+print(f"Number of uppercase words: {num_uppercase}")
+print(f"Number of lowercase words: {num_lowercase}")
+print(f"Number of numeric strings: {num_numeric}")
+print(f"Sum of all numbers: {sum_numeric}")
+# Word length chart
+word_lengths = {}
+for word in words:
+    length = len(word)
+    word_lengths[length] = word_lengths.get(length, 0) + 1
+
+print("LEN| OCCURENCES |NR.")
+print("-" * 50)
+for length, count in sorted(word_lengths.items()):
+    print(f"{length:<3}| {'*' * count:<15} |{count}")
