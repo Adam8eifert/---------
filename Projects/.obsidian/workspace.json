@@ -77,8 +77,7 @@
               "title": "Termíny lekcí"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       },
       {
         "id": "b7faf7cf2956df2e",
@@ -235,7 +234,7 @@
       "command-palette:Otevřít paletu příkazů": false
     }
   },
-  "active": "6221e404066c602f",
+  "active": "e11c37c1810db1d6",
   "lastOpenFiles": [
     "Termíny lekcí.md",
     "AI.md",

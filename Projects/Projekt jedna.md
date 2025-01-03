@@ -5,3 +5,4 @@ co bude potřeba?
 -dělat mezery
 -velka mala pismena string operator in
 -metoda get
+for _ in range(3)_

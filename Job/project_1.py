@@ -79,20 +79,28 @@ num_lowercase = sum(1 for word in words if word.islower())
 num_numeric = sum(1 for word in words if word.isdigit())
 sum_numeric = sum(int(word) for word in words if word.isdigit())
 # Analysis results
-print(f"\nAnalysis of selected text:")
-print(f"Number of words: {num_words}")
-print(f"Number of titlecase words: {num_titlecase}")
-print(f"Number of uppercase words: {num_uppercase}")
-print(f"Number of lowercase words: {num_lowercase}")
-print(f"Number of numeric strings: {num_numeric}")
-print(f"Sum of all numbers: {sum_numeric}")
+print(f"username:{username}")
+print(f"password:{password}")
+print(f"-" * 40)
+print(f"Hello {username}, welcome to the app!") 
+print(f"We have {len(TEXTS)} texts to be analyzed.")
+print(f"-" * 40)
+print(f"Enter a number btw. 1 and 3 to select: {text_num}")
+print(f"-" * 40)
+print(f"There are {num_words} words in the selected text.")
+print(f"There are {num_titlecase} titlecase words.")
+print(f"There are {num_uppercase} uppercase words.")
+print(f"There are {num_lowercase} lowercase words.")
+print(f"There are{num_numeric} numeric strings.")
+print(f"The sum of all the numbers {sum_numeric}")
+print(f"-" * 40)
 # Word length chart
 word_lengths = {}
 for word in words:
     length = len(word)
     word_lengths[length] = word_lengths.get(length, 0) + 1
 
-print("LEN| OCCURENCES |NR.")
-print("-" * 50)
+print(f"LEN| OCCURRENCES     |NR.")
+print("-" * 40)
 for length, count in sorted(word_lengths.items()):
     print(f"{length:<3}| {'*' * count:<15} |{count}")
