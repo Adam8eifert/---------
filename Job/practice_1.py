@@ -97,7 +97,7 @@ for word in words:
     word_lengths[length] = word_lengths.get(length, 0) + 1
 
 # Bar chart display
-print(f"LEN|  OCCURRENCES  |NR.")
+print(f"LEN| OCCURRENCES |NR.")
 print("-" * 40)
 for length, count in sorted(word_lengths.items()):
     print(f"{length:<3}|{'*' * count:<13}|{count}")

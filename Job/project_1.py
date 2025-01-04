@@ -40,8 +40,9 @@ users = {
 }
 # Loop for user login
 for _ in range(3):
-    username = input("Enter your username:").strip()
-    password = input("Enter your password:").strip()
+    username = input("username: ").strip()
+    password = input("password: ").strip()
+    print("-" * 40)
     # Check if both username and password are provided
     if not username or not password:
         print("Both username and password are required!")
@@ -59,11 +60,14 @@ for _ in range(3):
         print(f"username:{username},\npassword:{password}\nIncorrect password, terminating the program!")
         exit()
     # Successful login
-    print(f"Hello {username}, welcome to the app! We have {len(TEXTS)} texts to be analyzed.")
+    print(f"Hello {username}, welcome to the app!\nWe have {len(TEXTS)} texts to be analyzed.")
+    print("-" * 40)
     break  
 else:
-    print(f"\nusername:{username}\npassword:{password}\nAccess denied! Too many failed attempts.")
+    print(f"\nusername:{username}\npassword:{password}\nAccess denied! Too many failed attempts, terminating the program!")
+    exit()
 text_num = input("Enter a number btw. 1 and 3 to select:").strip()
+print("-" * 40)
 # Text num definitions
 if not text_num.isdigit() or int(text_num) not in range(1, 4):
     print("Invalid input. Terminating the program!")
@@ -71,32 +75,25 @@ if not text_num.isdigit() or int(text_num) not in range(1, 4):
 # Selection of a specific text
 selected_text = TEXTS[int(text_num) - 1]
 # Text analysis
-words = selected_text.split()
+words = selected_text.split()  
 num_words = len(words)
-num_titlecase = sum(1 for word in words if word.istitle())
-num_uppercase = sum(1 for word in words if word.isupper())
-num_lowercase = sum(1 for word in words if word.islower())
-num_numeric = sum(1 for word in words if word.isdigit())
+num_titlecase = sum(word.istitle() for word in words)
+num_uppercase = sum(word.isupper() and word.isalpha() for word in words)
+num_lowercase = sum(word.islower() for word in words)
+num_numeric = sum(word.isdigit() for word in words)
 sum_numeric = sum(int(word) for word in words if word.isdigit())
 # Analysis results
-print(f"username:{username}")
-print(f"password:{password}")
-print(f"-" * 40)
-print(f"Hello {username}, welcome to the app!") 
-print(f"We have {len(TEXTS)} texts to be analyzed.")
-print(f"-" * 40)
-print(f"Enter a number btw. 1 and 3 to select: {text_num}")
-print(f"-" * 40)
 print(f"There are {num_words} words in the selected text.")
 print(f"There are {num_titlecase} titlecase words.")
-print(f"There are {num_uppercase} uppercase words.")
+print(f"There are {num_uppercase} uppercase words.")  
 print(f"There are {num_lowercase} lowercase words.")
-print(f"There are{num_numeric} numeric strings.")
+print(f"There are {num_numeric} numeric strings.")
 print(f"The sum of all the numbers {sum_numeric}")
 print(f"-" * 40)
 # Word length chart
 word_lengths = {}
 for word in words:
+    word = word.strip(".,!?")  
     length = len(word)
     word_lengths[length] = word_lengths.get(length, 0) + 1
 
@@ -104,3 +101,4 @@ print(f"LEN| OCCURRENCES     |NR.")
 print("-" * 40)
 for length, count in sorted(word_lengths.items()):
     print(f"{length:<3}| {'*' * count:<15} |{count}")
+
