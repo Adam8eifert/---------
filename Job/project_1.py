@@ -39,11 +39,11 @@ users = {
     "liz": "pass123"
 }
 # Loop for user login
-sep = (f"-" * 40)
+SEP = ("-" * 40)
 for _ in range(3):
     username = input("username: ").strip()
     password = input("password: ").strip()
-    print(sep)
+    print(SEP)
     # Check if both username and password are provided
     if not username or not password:
         print("Both username and password are required!")
@@ -62,13 +62,13 @@ for _ in range(3):
         exit()
     # Successful login
     print(f"Hello {username}, welcome to the app!\nWe have {len(TEXTS)} texts to be analyzed.")
-    print(sep)
+    print(SEP)
     break  
 else:
     print(f"\nusername:{username}\npassword:{password}\nAccess denied! Too many failed attempts, terminating the program!")
     exit()
 text_num = input("Enter a number btw. 1 and 3 to select:").strip()
-print(sep)
+print(SEP)
 # Text num definitions
 if not text_num.isdigit() or int(text_num) not in range(1, 4):
     print("Invalid input. Terminating the program!")
@@ -90,7 +90,7 @@ print(f"There are {num_uppercase} uppercase words.")
 print(f"There are {num_lowercase} lowercase words.")
 print(f"There are {num_numeric} numeric strings.")
 print(f"The sum of all the numbers {sum_numeric}")
-print(sep)
+print(SEP)
 # Word length chart
 word_lengths = {}
 for word in words:
@@ -98,7 +98,7 @@ for word in words:
     length = len(word)
     word_lengths[length] = word_lengths.get(length, 0) + 1
 print(f"{'LEN':<3}|{'OCCURENCES':^15}|{'NR.':>3}")
-print(sep)
+print(SEP)
 for length, count in sorted(word_lengths.items()):
     print(f"{length:<3}| {'*' * count:<15} |{count}")
 
