@@ -116,13 +116,13 @@ names = zamestnanci_raw.strip().split("\n")
 
 # Generate phone numbers and emails
 phone_numbers = [f"+420 {random.randint(100, 999)} {random.randint(100, 999)} {random.randint(100, 999)}" for _ in names]
-emails = [f"{(name.replace(' ', '.')).lower()}@example.com" for name in names]
+emails = [f"{name.replace(' ', '.').lower()}@example.com" for name in names]
 
 zamestnanci = {
     "zamestnanec_id": tuple(range(1, len(names) + 1)),
     "jmeno": tuple(name.split()[0] for name in names),
     "prijmeni": tuple(name.split()[1] for name in names),
     "telefon": tuple(phone_numbers),
-        "email": tuple(emails),
-        "vytvoreno": tuple(time.strftime("%d.%m.%Y") for _ in names)
-    }
+    "email": tuple(emails),
+    "vytvoreno": tuple(f"{time.strftime('%d.%m.%Y')}" for _ in names)
+}
