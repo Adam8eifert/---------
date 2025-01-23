@@ -1,0 +1,1 @@
+A picture of a young, petite woman with her legs spread, kneeling on a bed. She has long, ginger hair and is wearing an almost unbuttoned white shirt. There are scary gothic creatures standing around the bed, staring at her. The room is dimly lit.
