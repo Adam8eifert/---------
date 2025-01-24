@@ -7,7 +7,7 @@ email: seifert.promotion@gmail.com
 # Import libraries
 from colorama import Fore, init  
 
-# Initialize colorama (optional)
+# Initialize colorama 
 init(autoreset=True)
 
 # Constants 
@@ -101,12 +101,12 @@ def play_game():
 
         if check_draw(board):
             display_board(board)
-            print(f"{Fore.MAGENTA}It's a draw!")
+            print(f"{Fore.GREEN}It's a draw!")
             break
 
         # Switch player
         current_player = PLAYER_O if current_player == PLAYER_X else PLAYER_X
 
-# Run the game
+
 if __name__ == "__main__":
     play_game()
