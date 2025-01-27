@@ -4,20 +4,94 @@ author: Adam Seifert
 email: seifert.promotion@gmail.com
 """
 
-# Import libraries
-from colorama import Fore, init  
+from typing import List
+from colorama import Fore, init
 
-# Initialize colorama 
+# Initialize colorama
 init(autoreset=True)
 
-# Constants 
+# Constants
 PLAYER_X = "X"
 PLAYER_O = "O"
 EMPTY_CELL = " "
-SEPARATOR = (f"{Fore.CYAN}{'=' * 40}")
+SEPARATOR = f"{Fore.CYAN}{'=' * 40}"
 
-# Display welcome message and rules
-def display_welcome():
+
+class TicTacToe:
+    """Class representing the game logic of Tic Tac Toe."""
+
+    def __init__(self) -> None:
+        """Initialize a new Tic Tac Toe game."""
+        self.board: List[str] = [EMPTY_CELL] * 9
+        self.current_player: str = PLAYER_X
+
+    def display_board(self) -> None:
+        """Display the current state of the board."""
+        print(f"{Fore.MAGENTA}+---+---+---+")
+        for i in range(0, 9, 3):
+            print(
+                f"{Fore.MAGENTA}| {self.colorize_mark(self.board[i])} "
+                f"{Fore.MAGENTA}| {self.colorize_mark(self.board[i+1])} "
+                f"{Fore.MAGENTA}| {self.colorize_mark(self.board[i+2])} {Fore.MAGENTA}|"
+            )
+            print(f"{Fore.MAGENTA}+---+---+---+")
+
+    @staticmethod
+    def colorize_mark(mark: str) -> str:
+        """Colorize the player's mark for display."""
+        if mark == PLAYER_X:
+            return f"{Fore.RED}{mark}"
+        elif mark == PLAYER_O:
+            return f"{Fore.BLUE}{mark}"
+        return mark
+
+    def is_valid_move(self, move: int) -> bool:
+        """Check if the move is valid.
+
+        Args:
+            move: The player's move as an integer (1-9).
+
+        Returns:
+            True if the move is valid, False otherwise.
+        """
+        return 1 <= move <= 9 and self.board[move - 1] == EMPTY_CELL
+
+    def make_move(self, move: int) -> None:
+        """Place the current player's mark on the board.
+
+        Args:
+            move: The player's move as an integer (1-9).
+        """
+        self.board[move - 1] = self.current_player
+
+    def switch_player(self) -> None:
+        """Switch to the other player."""
+        self.current_player = PLAYER_O if self.current_player == PLAYER_X else PLAYER_X
+
+    def check_winner(self) -> bool:
+        """Check if the current player has won the game.
+
+        Returns:
+            True if the current player has won, False otherwise.
+        """
+        win_conditions = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],  # Horizontal
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],  # Vertical
+            [0, 4, 8], [2, 4, 6],             # Diagonal
+        ]
+        return any(all(self.board[i] == self.current_player for i in condition) for condition in win_conditions)
+
+    def is_draw(self) -> bool:
+        """Check if the game is a draw.
+
+        Returns:
+            True if the board is full and there is no winner, False otherwise.
+        """
+        return all(cell != EMPTY_CELL for cell in self.board)
+
+
+def display_welcome() -> None:
+    """Display the welcome message and game rules."""
     print(f"{Fore.BLUE}Welcome to Tic Tac Toe")
     print(SEPARATOR)
     print(f"{Fore.MAGENTA}GAME RULES:")
@@ -32,80 +106,37 @@ def display_welcome():
     print(f"{Fore.BLUE}Let's start the game!")
     print(SEPARATOR)
 
-# Display the game board
-def display_board(board):
-    print(f"{Fore.MAGENTA}+---+---+---+")
-    for i in range(0, 9, 3):
-        print(
-            f"{Fore.MAGENTA}| {colorize_mark(board[i])} "
-            f"{Fore.MAGENTA}| {colorize_mark(board[i+1])} "
-            f"{Fore.MAGENTA}| {colorize_mark(board[i+2])} {Fore.MAGENTA}|"
-        )
-        print(f"{Fore.MAGENTA}+---+---+---+")
 
-def colorize_mark(mark):
-    if mark == PLAYER_X:
-        return f"{Fore.RED}{mark}"
-    elif mark == PLAYER_O:
-        return f"{Fore.BLUE}{mark}"
-    return mark
-
-# Check if a move is valid
-def is_valid_move(board, move):
-    is_digit = move.isdigit()
-    in_range = 1 <= int(move) <= 9 if is_digit else False
-    is_empty = board[int(move) - 1] == EMPTY_CELL if in_range else False
-    return is_digit and in_range and is_empty
-
-# Place the player's mark on the board
-def place_move(board, move, player):
-    board[int(move) - 1] = player
-
-# Check for a win condition
-def check_winner(board, player):
-    win_conditions = [
-        [0, 1, 2], [3, 4, 5], [6, 7, 8],  # Horizontal
-        [0, 3, 6], [1, 4, 7], [2, 5, 8],  # Vertical
-        [0, 4, 8], [2, 4, 6]              # Diagonal
-    ]
-    for condition in win_conditions:
-        if all(board[i] == player for i in condition):
-            return True
-    return False
-
-# Check for a draw
-def check_draw(board):
-    return all(cell != EMPTY_CELL for cell in board)
-
-# Main game loop
-def play_game():
+def play_game() -> None:
+    """Main function to play Tic Tac Toe."""
     display_welcome()
-    board = [EMPTY_CELL] * 9
-    current_player = PLAYER_X
+    game = TicTacToe()
 
     while True:
-        display_board(board)
+        game.display_board()
         print(SEPARATOR)
-        move = input(f"Player {Fore.GREEN}{current_player}{Fore.WHITE}, please enter your move {Fore.GREEN}(1-9): ")
-        print(SEPARATOR)
-        if not is_valid_move(board, move):
-            print(f"{Fore.RED}Invalid move. Please try again.")
+
+        try:
+            move = int(input(f"Player {Fore.GREEN}{game.current_player}{Fore.WHITE}, please enter your move (1-9): "))
+            if not game.is_valid_move(move):
+                raise ValueError("Invalid move. The cell is occupied or out of range.")
+        except ValueError as e:
+            print(f"{Fore.RED}{e} Please try again.")
             continue
 
-        place_move(board, move, current_player)
+        game.make_move(move)
 
-        if check_winner(board, current_player):
-            display_board(board)
-            print(f"{Fore.GREEN}Congratulations! Player {colorize_mark(current_player)} wins!")
+        if game.check_winner():
+            game.display_board()
+            print(f"{Fore.GREEN}Congratulations! Player {game.colorize_mark(game.current_player)} wins!")
             break
 
-        if check_draw(board):
-            display_board(board)
+        if game.is_draw():
+            game.display_board()
             print(f"{Fore.GREEN}It's a draw!")
             break
 
-        # Switch player
-        current_player = PLAYER_O if current_player == PLAYER_X else PLAYER_X
+        game.switch_player()
 
 
 if __name__ == "__main__":
