@@ -117,7 +117,7 @@ def play_game() -> None:
         print(SEPARATOR)
 
         try:
-            move = int(input(f"Player {Fore.GREEN}{game.current_player}{Fore.WHITE}, please enter your move (1-9): "))
+            move = int(input(f"Player {Fore.GREEN}{game.current_player}{Fore.WHITE}, please enter your move {Fore.GREEN}(1-9): "))
             if not game.is_valid_move(move):
                 raise ValueError("Invalid move. The cell is occupied or out of range.")
         except ValueError as e:
